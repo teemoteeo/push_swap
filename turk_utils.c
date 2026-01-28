@@ -1,45 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_utils1.c                                 :+:      :+:    :+:   */
+/*   turk_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tcostant <tcostant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/20 15:35:31 by timoteo           #+#    #+#             */
-/*   Updated: 2026/01/28 16:42:01 by tcostant         ###   ########.fr       */
+/*   Created: 2026/01/28 16:00:00 by tcostant          #+#    #+#             */
+/*   Updated: 2026/01/28 16:00:00 by tcostant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	find_min(t_stack *stack)
+void	final_rotate(t_stack *a)
 {
-	int		min;
-	t_node	*number;
+	int	min_pos;
 
-	number = stack->top;
-	min = number->value;
-	while (number)
+	min_pos = get_min_index_position(a);
+	if (min_pos <= a->size / 2)
 	{
-		if (number->value < min)
-			min = number->value;
-		number = number->next;
+		while (min_pos-- > 0)
+			ra(a);
 	}
-	return (min);
-}
-
-int	find_max(t_stack *stack)
-{
-	int		max;
-	t_node	*number;
-
-	number = stack->top;
-	max = number->value;
-	while (number)
+	else
 	{
-		if (number->value > max)
-			max = number->value;
-		number = number->next;
+		min_pos = a->size - min_pos;
+		while (min_pos-- > 0)
+			rra(a);
 	}
-	return (max);
 }

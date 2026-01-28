@@ -14,7 +14,11 @@ NAME = push_swap.a
 
 SRCS = push_swap.c \
        push_swap_utils1.c \
-       radix_sort.c \
+       index.c \
+       small_sort.c \
+       cost.c \
+       turk_sort.c \
+       turk_utils.c \
        swap.c \
        push.c \
        rotate.c \

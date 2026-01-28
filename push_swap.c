@@ -99,7 +99,7 @@ int	main(int argc, char **argv)
 		free_stack(b);
 		return (0);
 	}
-	radix_sort(a, b);
+	turk_sort(a, b);
 	free_stack(a);
 	free_stack(b);
 	return (0);

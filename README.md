@@ -2,20 +2,25 @@
 
 ## Description
 
-Sort integers across two stacks using limited operations. This implementation uses **Radix Sort** for O(n·k) complexity, achieving ~500 ops for 100 numbers and ~4000 for 500.
+Sort integers across two stacks using limited operations. This implementation uses the **Turkish Algorithm** with cost-based optimization.
 
 ## Algorithm
 
-Process each bit position from LSB to MSB. For each bit, rotate through stack A: if the bit is 1, push to B; if 0, rotate. After each pass, push B back to A. Result: sorted stack.
+1. **Index normalization**: Convert values to ranks 0 to n-1
+2. **Push to B**: Move all elements except 3 to stack B
+3. **Sort 3 in A**: Hardcoded optimal moves
+4. **Push back**: For each element in B, calculate the cheapest move and push to correct position in A
+5. **Final rotate**: Rotate A so minimum is on top
 
 ```
-for each bit (0 to max_bits):
-    for each element in A:
-        if bit is 1:
-            pb
-        else:
-            ra
-    push all B back to A
+Phase 1: Push all to B (keep 3 in A)
+Phase 2: Sort the 3 remaining
+Phase 3: For each in B:
+    - Find target position in A
+    - Calculate cost (use rr/rrr when possible)
+    - Execute cheapest move
+    - pa
+Phase 4: Rotate A to put min on top
 ```
 
 ## Build & Run
@@ -33,6 +38,6 @@ ARG="4 67 3 87 23"; ./push_swap $ARG | ./checker $ARG
 
 ## Resources
 
-- Radix Sort: https://en.wikipedia.org/wiki/Radix_sort
-- Bit manipulation fundamentals
+- Turkish Algorithm explanation
+- Cost-based sorting optimization
 - Stack data structures
