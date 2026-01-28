@@ -1,34 +1,38 @@
 *This project has been created as part of the 42 curriculum by tcostant*
 
-# DESCRIPTION
+## Description
 
-**push_swap** is a sorting algorithm. Given 2 stacks, **a** and **b**, the algorithm sorts the elements of the given stack in the second stack. The main goal of the project is making the algorithm which uses as little instructions as possible.
+Sort integers across two stacks using limited operations. This implementation uses **Radix Sort** for O(n·k) complexity, achieving ~500 ops for 100 numbers and ~4000 for 500.
 
-# INSTRUCTIONS
+## Algorithm
 
-	## Compilation
+Process each bit position from LSB to MSB. For each bit, rotate through stack A: if the bit is 1, push to B; if 0, rotate. After each pass, push B back to A. Result: sorted stack.
 
-	To compile mandatory part:
-	IN TERMINAL ---> make
+```
+for each bit (0 to max_bits):
+    for each element in A:
+        if bit is 1:
+            pb
+        else:
+            ra
+    push all B back to A
+```
 
-	To compile bonus part:
-	IN TERMINAL ---> make bonus
+## Build & Run
 
-	## Execution
+```bash
+make
+./push_swap 3 2 1 0
+```
 
-	The program takes in input a list of ints, first number is top of stack
-	./push_swap 2 3 1 6 9 0 4
+Test:
+```bash
+make bonus
+ARG="4 67 3 87 23"; ./push_swap $ARG | ./checker $ARG
+```
 
-	## Testing
+## Resources
 
-	To test use 42's tester:
-	ARG="4 67 3 87 23"; ./push_swap $ARG | ./checker_OS $ARG 
-
-# RESOURCES
-
-YT:	https://www.youtube.com/watch?v=4dMsuxfqufg
-	https://www.youtube.com/watch?v=wRvipSG4Mmk
-
-GITHUB:	https://github.com/jdecorte-be/42-Push-Swap
-
-AI: Code Design and general assistance
+- Radix Sort: https://en.wikipedia.org/wiki/Radix_sort
+- Bit manipulation fundamentals
+- Stack data structures
